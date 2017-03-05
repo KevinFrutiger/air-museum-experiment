@@ -6,6 +6,7 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>
 <script src='js/three-glTFLoader.js'></script>
 <script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.2/dist/aframe-altspace-component.min.js"></script>
 </head>
@@ -33,6 +34,48 @@
       <img id="boeing-747-100-plaque-img" src="assets/images/boeing-747-100-plaque.png">
       <img id="boeing-747-100-plaque-lower-img" src="assets/images/boeing-747-100-plaque-lower.png">
       <img id="wikipedia-logo-img" src="assets/images/wikipedia-logo.png">
+
+      <!-- info display template -->
+      <script id="info-display" type="text/html">
+          <a-image
+              src="${ year }"
+              width="6" height="3"
+              position="0 10 0">
+          </a-image>
+          <a-image
+              src="${ name }"
+              width="6" height="3"
+              position="0 1.4 0">
+          </a-image>
+          <a-entity
+              position="0 0.5 0.1">
+            <a-entity
+                position="0 0 0"
+                rotation="-24 0 0">
+              <a-plane
+                  shader="flat" side="front" src="${ description }"
+                  width="6" height="0.75">
+              </a-plane>
+              <a-plane
+                  shader="flat" side="back" color="#111"
+                  width="6" height="0.75">
+              </a-plane>
+            </a-entity>
+            <a-entity
+                position="3.5 0 0.50"
+                rotation="-24 -50 0">
+              <a-plane fg-web-link="url: ${ url }"
+                  shader="flat" side="front" src="${ button }"
+                  width="0.75" height="0.75">
+              </a-plane>
+              <a-plane
+                  shader="flat" side="back" color="#111"
+                  width="0.75" height="0.75">
+              </a-plane>
+            </a-entity>
+          </a-entity>
+      </script>
+
     </a-assets>
 
     <!-- Airport -->
@@ -116,48 +159,14 @@
     </a-entity>
 
     <!-- 747-100 display -->
-    <a-entity id="boeing-747-100-label" position="38.85 0 -100.00">
-      <a-image
-          id="boeing-747-100-year"
-          src="#boeing-747-100-label-year-img"
-          width="6" height="3"
-          position="0 10 0">
-      </a-image>
-      <a-image
-          id="boeing-747-100-plaque-upper"
-          src="#boeing-747-100-plaque-img"
-          width="6" height="3"
-          position="0 1.4 0">
-      </a-image>
-      <a-entity id="boeing-747-100-display-lower"
-          position="0 0.5 0.1">
-        <a-entity id="being-747-100-plaque-lower"
-            position="0 0 0"
-            rotation="-24 0 0">
-          <a-plane
-              shader="flat" side="front" src="#boeing-747-100-plaque-lower-img"
-              width="6" height="0.75">
-          </a-plane>
-          <a-plane
-              shader="flat" side="back" color="#111"
-              width="6" height="0.75">
-          </a-plane>
-        </a-entity>
-        <a-entity
-            position="3.5 0 0.50"
-            rotation="-24 -50 0">
-          <a-plane id="wikipedia-logo"
-              shader="flat" side="front" src="#wikipedia-logo-img"
-              width="0.75" height="0.75">
-          </a-plane>
-          <a-plane
-              shader="flat" side="back" color="#111"
-              width="0.75" height="0.75">
-          </a-plane>
-        </a-entity>
-      </a-entity>
-    </a-entity>
-
+    <a-entity id="boeing-747-100-display"
+        position="38.85 0 -100.00"
+        template="src: #info-display"
+        data-year="#boeing-747-100-label-year-img"
+        data-name="#boeing-747-100-plaque-img"
+        data-description="#boeing-747-100-plaque-lower-img"
+        data-button="#wikipedia-logo-img"
+        data-url="https://en.wikipedia.org/wiki/Boeing_747"></a-entity>
 
     <!-- Wright Flyer -->
     <a-entity id="wright-flyer" gltf-model="#wright-flyer-gltf"
@@ -171,46 +180,14 @@
     </a-entity>
 
     <!-- Wright Flyer display -->
-    <a-entity id="wright-flyer-label" position="77.53 0 -100.00">
-      <a-image id="wright-flyer-year" src="#wright-flyer-label-year-img"
-               width="6" height="3"
-               position="0 10 0"></a-image>
-
-      <a-image
-          id="wright-flyer-plaque-upper"
-          src="#wright-flyer-plaque-img"
-          width="6" height="3"
-          position="0 1.4 0">
-      </a-image>
-      <a-entity id="wright-flyer-display-lower"
-          position="0 0.5 0.1">
-        <a-entity id="wright-flyer-plaque-lower"
-            position="0 0 0"
-            rotation="-24 0 0">
-          <a-plane
-              shader="flat" side="front" src="#wright-flyer-plaque-lower-img"
-              width="6" height="0.75">
-          </a-plane>
-          <a-plane
-              shader="flat" side="back" color="#111"
-              width="6" height="0.75">
-          </a-plane>
-        </a-entity>
-        <a-entity
-            position="3.5 0 0.50"
-            rotation="-24 -50 0">
-          <a-plane id="wikipedia-logo-2"
-              shader="flat" side="front" src="#wikipedia-logo-img"
-              width="0.75" height="0.75">
-          </a-plane>
-          <a-plane
-              shader="flat" side="back" color="#111"
-              width="0.75" height="0.75">
-          </a-plane>
-        </a-entity>
-      </a-entity>
-
-    </a-entity>
+    <a-entity id="wright-flyer-display"
+        position="77.53 0 -100.00"
+        template="src: #info-display"
+        data-year="#wright-flyer-label-year-img"
+        data-name="#wright-flyer-plaque-img"
+        data-description="#wright-flyer-plaque-lower-img"
+        data-button="#wikipedia-logo-img"
+        data-url="https://en.wikipedia.org/wiki/Wright_Flyer"></a-entity>
 
     <!-- Camera for use in browser. -->
     <a-entity position="38.85 0 -90">
@@ -225,8 +202,6 @@
 
 
   <script>
-
-
     if (!inAltspace()) {
       // Create a sky image.
       var el = document.createElement('a-sky');
@@ -247,54 +222,15 @@
       );
     }
 
-    var wikiButton = document.querySelector('#wikipedia-logo');
-
-    wikiButton.addEventListener('click', function() {
-      if (inAltspace()) {
-        // Note: Altspace web view does not respect anchors.
-        altspace.open('https://en.wikipedia.org/wiki/Boeing_747');
-      } else {
-        window.open('https://en.wikipedia.org/wiki/Boeing_747');
-      }
-    });
-
-    wikiButton.addEventListener('mouseenter', function(event) {
-      event.target.setAttribute('color', '#ffd200');
-    }, true);
-
-    // Doesn't work in vanilla A-Frame 0.3.0
-    wikiButton.addEventListener('mouseleave', function(event) {
-      event.target.setAttribute('color', '#fff');
-    });
-
-    var wikiButton2 = document.querySelector('#wikipedia-logo-2');
-
-    wikiButton2.addEventListener('click', function() {
-      if (inAltspace()) {
-        console.log('doing altspace stuff');
-        // Note: Altspace web view does not respect anchors.
-        altspace.open('https://en.wikipedia.org/wiki/Wright_Flyer');
-      } else {
-        console.log('hi there');
-        window.open('https://en.wikipedia.org/wiki/Wright_Flyerw');
-      }
-    });
-
-    wikiButton2.addEventListener('mouseenter', function(event) {
-      event.target.setAttribute('color', '#ffd200');
-    }, true);
-
-    // Doesn't work in vanilla A-Frame 0.3.0
-    wikiButton2.addEventListener('mouseleave', function(event) {
-      event.target.setAttribute('color', '#fff');
-    });
 
     /* Components */
 
+    /**
+     * Loads glTF model files.
+     * Copied from gltf-model from 0.5.0 since it doesn't exist in 0.3.0.
+     * Changed to use glTFLoader, since we're using three r74 instead of r84.
+     */
     AFRAME.registerComponent('gltf-model', {
-      // Copied from gltf-model from 0.5.0 since it doesn't exist in 0.3.0
-      // Changed to use glTFLoader, since we're using three r74 instead of r84
-
       schema: {type: 'src'},
 
       init: function () {
@@ -324,6 +260,55 @@
         if (!this.model) { return; }
         this.el.removeObject3D('mesh');
         //this.system.unregisterModel(this.model);
+      }
+    });
+
+    /**
+     *  Adds handlers to open a web page.
+     *
+     *
+     *  Note that Altspace web viewe does not navigate to anchors.
+     */
+    AFRAME.registerComponent('fg-web-link', {
+      schema: {
+        url: {type: 'string'}
+      },
+
+      init: function() {
+        var data = this.data;
+        var el = this.el;
+
+        this.clickHandler = function(event) {
+         if (inAltspace()) {
+            altspace.open(data.url);
+          } else {
+            window.open(data.url);
+          }
+        };
+
+        this.mouseenterHandler = function(event) {
+          event.target.setAttribute('color', '#ffd200');
+        };
+
+        this.mouseleave = function(event) {
+          event.target.setAttribute('color', '#fff');
+        };
+
+        el.addEventListener('click', this.clickHandler);
+        el.addEventListener('mouseenter', this.mouseenterHandler, true);
+        // Doesn't work in browser A-Frame 0.3.0
+        el.addEventListener('mouseleave', this.mouseleave);
+
+      },
+
+      update: function(oldData) {
+        // Nothing.
+      },
+
+      remove: function() {
+        el.removeEventListener('click', this.clickHandler);
+        el.removeEventListener('mouseenter', this.mouseenterHandler, true);
+        el.removeEventListener('mouseleave', this.mouseleave)
       }
     });
   </script>
