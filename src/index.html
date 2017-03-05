@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Air Museum</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+<script src='js/three-glTFLoader.js'></script>
+<script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.2/dist/aframe-altspace-component.min.js"></script>
+</head>
+<body>
+
+  <!-- Scene rotated to match baked lighting to sunset in sky image of Playground space -->
+  <a-scene altspace rotation="0 150 0">
+
+    <a-assets>
+      <!-- airport assets -->
+      <a-asset-item id="ground-gltf" src="assets/models/ground.gltf?v1.1"></a-asset-item>
+      <a-asset-item id="tower-gltf" src="assets/models/tower.gltf?v1.1"></a-asset-item>
+      <a-asset-item id="hangar-1-gltf" src="assets/models/hangar_1.gltf?v1.0"></a-asset-item>
+      <a-asset-item id="hangar-2-gltf" src="assets/models/hangar_2.gltf?v1.0"></a-asset-item>
+
+      <!-- aircraft assets -->
+      <a-asset-item id="boeing-747-100-gltf" src="assets/models/boeing_747-100.gltf?v1.3"></a-asset-item>
+      <a-assst-item id="wright-flyer-gltf" src="assets/models/wright_flyer.gltf?v1.2"></a-assst-item>
+
+      <!-- info display assets -->
+      <img id="wright-flyer-label-year-img" src="assets/images/wright-flyer-label-year.png">
+      <img id="wright-flyer-plaque-img" src="assets/images/wright-flyer-plaque.png">
+      <img id="wright-flyer-plaque-lower-img" src="assets/images/wright-flyer-plaque-lower.png">
+      <img id="boeing-747-100-label-year-img" src="assets/images/boeing-747-100-label-year.png">
+      <img id="boeing-747-100-plaque-img" src="assets/images/boeing-747-100-plaque.png">
+      <img id="boeing-747-100-plaque-lower-img" src="assets/images/boeing-747-100-plaque-lower.png">
+      <img id="wikipedia-logo-img" src="assets/images/wikipedia-logo.png">
+    </a-assets>
+
+    <!-- Airport -->
+    <a-entity id="ground" gltf-model="#ground-gltf"></a-entity>
+    <a-entity id="tower" gltf-model="#tower-gltf">
+      <a-entity id="tower-collider"
+          n-mesh-collider="type: environment"
+          geometry="primitive: box; width: 16.27; depth: 16.27; height: 72"
+          position="113.73 36 114.98"></a-entity>
+    </a-entity>
+    <a-entity id="hangar-1" gltf-model="#hangar-1-gltf"></a-entity>
+    <a-entity id="hangar-2" gltf-model="#hangar-2-gltf"></a-entity>
+
+    <!-- Aircraft and displays -->
+
+    <!-- Boeing 747-100 -->
+    <a-entity id="boeing-747-100" gltf-model="#boeing-747-100-gltf" position="38.85 0 -132.35">
+
+      <!-- Engine audio. Engine #1 - 4 (L - R) -->
+      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 0.25"
+          position="21.08 3.60 -0.70"></a-entity>
+      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 0.25"
+          position="11.89 2.59 8.59"></a-entity>
+      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 0.25"
+          position="-11.89 2.59 8.59"></a-entity>
+      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 0.25"
+          position="-21.08 3.60 -0.70"></a-entity>
+
+      <!-- nose gear colliders -->
+      <a-entity n-mesh-collider="type: environment"
+          geometry="primitive: box; width: 1.6; height: 5.5; depth: 1.7"
+          position="0 0.62 25.22"></a-entity>
+
+      <!-- wing gear colliders -->
+      <a-entity n-mesh-collider="type: environment"
+          geometry="primitive: box; width: 1.83; height: 8.33; depth: 3.06"
+          position="5.26 0 2.45"></a-entity>
+      <a-entity n-mesh-collider="type: environment"
+          geometry="primitive: box; width: 1.83; height: 8.33; depth: 3.06"
+          position="-5.26 0 2.45"></a-entity>
+
+      <!-- rear gear colliders -->
+      <a-entity n-mesh-collider="type: environment"
+          geometry="primitive: box; width: 5.26; height: 8.33; depth: 3.46"
+          position="0 0 0"></a-entity>
+
+      <!-- engine #2 colliders -->
+      <a-entity n-mesh-collider="type: environment"
+          geometry="primitive: box; width: 2.93; height: 3; depth: 5.23"
+          position="11.89 2.6 6.40">
+        <a-entity n-mesh-collider="type: environment"
+            geometry="primitive: box; width: 2.93; height: 0.25; depth: 1.00"
+            position="0 -1.2 3.1">
+          <a-entity n-mesh-collider="type: environment"
+            position="1.00 1.3 -1.2"
+            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30"></a-entity>
+          <a-entity n-mesh-collider="type: environment"
+            position="-1.00 1.3 -1.2"
+            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30"></a-entity>
+        </a-entity>
+      </a-entity>
+
+      <!-- engine #3 colliders -->
+      <a-entity id="temp" n-mesh-collider="type: environment"
+          geometry="primitive: box; width: 2.93; height: 3; depth: 5.23"
+          position="-11.89 2.6 6.40">
+        <a-entity n-mesh-collider="type: environment"
+            geometry="primitive: box; width: 2.93; height: 0.25; depth: 1.00"
+            position="0 -1.2 3.1">
+          <a-entity n-mesh-collider="type: environment"
+            position="1.00 1.3 -1.2"
+            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30">
+          </a-entity>
+          <a-entity n-mesh-collider="type: environment"
+            position="-1.00 1.3 -1.2"
+            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30">
+          </a-entity>
+        </a-entity>
+      </a-entity>
+
+    </a-entity>
+
+    <!-- 747-100 display -->
+    <a-entity id="boeing-747-100-label" position="38.85 0 -100.00">
+      <a-image
+          id="boeing-747-100-year"
+          src="#boeing-747-100-label-year-img"
+          width="6" height="3"
+          position="0 10 0">
+      </a-image>
+      <a-image
+          id="boeing-747-100-plaque-upper"
+          src="#boeing-747-100-plaque-img"
+          width="6" height="3"
+          position="0 1.4 0">
+      </a-image>
+      <a-entity id="boeing-747-100-display-lower"
+          position="0 0.5 0.1">
+        <a-entity id="being-747-100-plaque-lower"
+            position="0 0 0"
+            rotation="-24 0 0">
+          <a-plane
+              shader="flat" side="front" src="#boeing-747-100-plaque-lower-img"
+              width="6" height="0.75">
+          </a-plane>
+          <a-plane
+              shader="flat" side="back" color="#111"
+              width="6" height="0.75">
+          </a-plane>
+        </a-entity>
+        <a-entity
+            position="3.5 0 0.50"
+            rotation="-24 -50 0">
+          <a-plane id="wikipedia-logo"
+              shader="flat" side="front" src="#wikipedia-logo-img"
+              width="0.75" height="0.75">
+          </a-plane>
+          <a-plane
+              shader="flat" side="back" color="#111"
+              width="0.75" height="0.75">
+          </a-plane>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+
+
+    <!-- Wright Flyer -->
+    <a-entity id="wright-flyer" gltf-model="#wright-flyer-gltf"
+        position="77.53 0 -107.85">
+
+      <!-- overall collider -->
+      <a-entity n-mesh-collider="type: environment"
+          geometry="primitive: box; width: 12.31; height: 2.74; depth: 6.43"
+          position="0 1.37 0"></a-entity>
+
+    </a-entity>
+
+    <!-- Wright Flyer display -->
+    <a-entity id="wright-flyer-label" position="77.53 0 -100.00">
+      <a-image id="wright-flyer-year" src="#wright-flyer-label-year-img"
+               width="6" height="3"
+               position="0 10 0"></a-image>
+
+      <a-image
+          id="wright-flyer-plaque-upper"
+          src="#wright-flyer-plaque-img"
+          width="6" height="3"
+          position="0 1.4 0">
+      </a-image>
+      <a-entity id="wright-flyer-display-lower"
+          position="0 0.5 0.1">
+        <a-entity id="wright-flyer-plaque-lower"
+            position="0 0 0"
+            rotation="-24 0 0">
+          <a-plane
+              shader="flat" side="front" src="#wright-flyer-plaque-lower-img"
+              width="6" height="0.75">
+          </a-plane>
+          <a-plane
+              shader="flat" side="back" color="#111"
+              width="6" height="0.75">
+          </a-plane>
+        </a-entity>
+        <a-entity
+            position="3.5 0 0.50"
+            rotation="-24 -50 0">
+          <a-plane id="wikipedia-logo-2"
+              shader="flat" side="front" src="#wikipedia-logo-img"
+              width="0.75" height="0.75">
+          </a-plane>
+          <a-plane
+              shader="flat" side="back" color="#111"
+              width="0.75" height="0.75">
+          </a-plane>
+        </a-entity>
+      </a-entity>
+
+    </a-entity>
+
+    <!-- Camera for use in browser. -->
+    <a-entity position="38.85 0 -90">
+      <!-- Altspace client ignores this -->
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-entity>
+
+  </a-scene>
+
+
+
+  <script>
+
+
+    if (!inAltspace()) {
+      // Create a sky image.
+      var el = document.createElement('a-sky');
+      el.setAttribute('material', 'color', 'blue');
+
+      var sceneEl = document.querySelector('a-scene');
+      sceneEl.appendChild(el);
+
+      sceneEl = null;
+      el = null;
+    }
+
+    function inAltspace() {
+      return (
+        (typeof altspace !== 'undefined') &&
+        (typeof altspace.inClient !== 'undefined') &&
+        altspace.inClient
+      );
+    }
+
+    var wikiButton = document.querySelector('#wikipedia-logo');
+
+    wikiButton.addEventListener('click', function() {
+      if (inAltspace()) {
+        // Note: Altspace web view does not respect anchors.
+        altspace.open('https://en.wikipedia.org/wiki/Boeing_747');
+      } else {
+        window.open('https://en.wikipedia.org/wiki/Boeing_747');
+      }
+    });
+
+    wikiButton.addEventListener('mouseenter', function(event) {
+      event.target.setAttribute('color', '#ffd200');
+    }, true);
+
+    // Doesn't work in vanilla A-Frame 0.3.0
+    wikiButton.addEventListener('mouseleave', function(event) {
+      event.target.setAttribute('color', '#fff');
+    });
+
+    var wikiButton2 = document.querySelector('#wikipedia-logo-2');
+
+    wikiButton2.addEventListener('click', function() {
+      if (inAltspace()) {
+        console.log('doing altspace stuff');
+        // Note: Altspace web view does not respect anchors.
+        altspace.open('https://en.wikipedia.org/wiki/Wright_Flyer');
+      } else {
+        console.log('hi there');
+        window.open('https://en.wikipedia.org/wiki/Wright_Flyerw');
+      }
+    });
+
+    wikiButton2.addEventListener('mouseenter', function(event) {
+      event.target.setAttribute('color', '#ffd200');
+    }, true);
+
+    // Doesn't work in vanilla A-Frame 0.3.0
+    wikiButton2.addEventListener('mouseleave', function(event) {
+      event.target.setAttribute('color', '#fff');
+    });
+
+    /* Components */
+
+    AFRAME.registerComponent('gltf-model', {
+      // Copied from gltf-model from 0.5.0 since it doesn't exist in 0.3.0
+      // Changed to use glTFLoader, since we're using three r74 instead of r84
+
+      schema: {type: 'src'},
+
+      init: function () {
+        this.model = null;
+        this.loader = new THREE.glTFLoader();
+      },
+
+      update: function () {
+        console.log('update gtlf loader', this.el);
+        var self = this;
+        var el = this.el;
+        var src = this.data;
+
+        if (!src) { return; }
+
+        this.remove();
+
+        this.loader.load(src, function gltfLoaded (gltfModel) {
+          self.model = gltfModel.scene;
+          //self.system.registerModel(self.model);
+          el.setObject3D('mesh', self.model);
+          el.emit('model-loaded', {format: 'gltf', model: self.model});
+        });
+      },
+
+      remove: function () {
+        if (!this.model) { return; }
+        this.el.removeObject3D('mesh');
+        //this.system.unregisterModel(this.model);
+      }
+    });
+  </script>
+</body>
+</html>
