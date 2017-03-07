@@ -6,14 +6,9 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
-<!--<script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>-->
-<script src="js/gltf/gltfUtilities.js"></script>
-<script src="js/gltf/glTFLoaderUtils.js"></script>
-<script src="js/gltf/glTFLoaderUtils.js"></script>
-<script src="js/gltf/glTF-parser.js"></script>
-<script src="js/gltf/glTFShaders.js"></script>
-<script src='js/gltf/glTFLoader.js'></script>
-<!--<script src="https://sdk.altvr.com/libs/altspace.js/2.0.2/altspace.min.js"></script>-->
+<script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>
+<script src="js/three-glTFLoader.js"></script>
+<script src="https://sdk.altvr.com/libs/altspace.js/2.0.2/altspace.min.js"></script>
 </head>
 <body>
 
@@ -89,6 +84,7 @@
       <a-entity id="tower-collider"
           n-mesh-collider="type: environment"
           geometry="primitive: box; width: 16.27; depth: 16.27; height: 72"
+          material="shader: flat; visible: false"
           position="113.73 36 114.98"></a-entity>
     </a-entity>
     <a-entity id="hangar-1" gltf-model="#hangar-1-gltf"></a-entity>
@@ -112,51 +108,65 @@
       <!-- nose gear colliders -->
       <a-entity n-mesh-collider
           geometry="primitive: box; width: 1.6; height: 5.5; depth: 1.7"
+          material="shader: flat; visible: false"
           position="0 0.62 25.22"></a-entity>
 
       <!-- wing gear colliders -->
       <a-entity n-mesh-collider="type: environment"
           geometry="primitive: box; width: 1.83; height: 8.33; depth: 3.06"
+          material="shader: flat; visible: false"
           position="5.26 0 2.45"></a-entity>
       <a-entity n-mesh-collider="type: environment"
           geometry="primitive: box; width: 1.83; height: 8.33; depth: 3.06"
+          material="shader: flat; visible: false"
           position="-5.26 0 2.45"></a-entity>
 
       <!-- rear gear colliders -->
       <a-entity n-mesh-collider="type: environment"
           geometry="primitive: box; width: 5.26; height: 8.33; depth: 3.46"
+          material="shader: flat; visible: false"
           position="0 0 0"></a-entity>
 
       <!-- engine #2 colliders -->
       <a-entity n-mesh-collider="type: environment"
           geometry="primitive: box; width: 2.93; height: 3; depth: 5.23"
+          material="shader: flat; visible: false"
           position="11.89 2.6 6.40">
         <a-entity n-mesh-collider="type: environment"
             geometry="primitive: box; width: 2.93; height: 0.25; depth: 1.00"
+            material="shader: flat; visible: false"
             position="0 -1.2 3.1">
           <a-entity n-mesh-collider="type: environment"
             position="1.00 1.3 -1.2"
-            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30"></a-entity>
+            material="shader: flat; visible: false"
+            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30">
+          </a-entity>
           <a-entity n-mesh-collider="type: environment"
             position="-1.00 1.3 -1.2"
-            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30"></a-entity>
+            material="shader: flat; visible: false"
+            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30">
+          </a-entity>
         </a-entity>
       </a-entity>
 
       <!-- engine #3 colliders -->
       <a-entity id="temp" n-mesh-collider="type: environment"
           geometry="primitive: box; width: 2.93; height: 3; depth: 5.23"
+          material="shader: flat; visible: false"
           position="-11.89 2.6 6.40">
         <a-entity n-mesh-collider="type: environment"
             geometry="primitive: box; width: 2.93; height: 0.25; depth: 1.00"
+            material="shader: flat; visible: false"
             position="0 -1.2 3.1">
           <a-entity n-mesh-collider="type: environment"
-            position="1.00 1.3 -1.2"
-            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30">
+            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30"
+            material="shader: flat; visible: false"
+            position="1.00 1.3 -1.2">
           </a-entity>
           <a-entity n-mesh-collider="type: environment"
-            position="-1.00 1.3 -1.2"
-            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30">
+            geometry="primitive: box; width: 0.22; height: 2.2; depth: 3.30"
+            material="shader: flat; visible: false"
+            position="-1.00 1.3 -1.2">
           </a-entity>
         </a-entity>
       </a-entity>
