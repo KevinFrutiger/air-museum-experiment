@@ -6,9 +6,14 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
-<script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>
-<script src='js/three-glTFLoader.js'></script>
-<script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.2/dist/aframe-altspace-component.min.js"></script>
+<!--<script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>-->
+<script src="js/gltf/gltfUtilities.js"></script>
+<script src="js/gltf/glTFLoaderUtils.js"></script>
+<script src="js/gltf/glTFLoaderUtils.js"></script>
+<script src="js/gltf/glTF-parser.js"></script>
+<script src="js/gltf/glTFShaders.js"></script>
+<script src='js/gltf/glTFLoader.js'></script>
+<!--<script src="https://sdk.altvr.com/libs/altspace.js/2.0.2/altspace.min.js"></script>-->
 </head>
 <body>
 
@@ -105,7 +110,7 @@
           position="-21.08 3.60 -0.70"></a-entity>
 
       <!-- nose gear colliders -->
-      <a-entity n-mesh-collider="type: environment"
+      <a-entity n-mesh-collider
           geometry="primitive: box; width: 1.6; height: 5.5; depth: 1.7"
           position="0 0.62 25.22"></a-entity>
 
@@ -173,9 +178,12 @@
         position="77.53 0 -107.85">
 
       <!-- overall collider -->
-      <a-entity n-mesh-collider="type: environment"
+      <!--<a-entity n-mesh-collider="type: environment"
           geometry="primitive: box; width: 12.31; height: 2.74; depth: 6.43"
-          position="0 1.37 0"></a-entity>
+          position="0 1.37 0"></a-entity>-->
+      <a-entity n-box-collider="type: environment; size: 12.31 2.74 6.43"
+          position="0 1.37 0"
+          ></a-entity>
 
     </a-entity>
 
