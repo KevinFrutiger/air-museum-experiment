@@ -1,5 +1,5 @@
 // For use in Coherent UI Debugger/DevTools only.
-// document.body.appendChild(document.createElement('script')).src = 'dev_utils.js';
+// document.body.appendChild(document.createElement('script')).src = 'js/dev_utils.js';
 
 function showColliders(str) {
   var colliderType = str || 'mesh';
