@@ -1,0 +1,11 @@
+{
+  "name": "vr-air-museum",
+  "version": "1.0.0",
+  "description": "VR Air Museum built for the Altspace and the Web.",
+  "author": "Kevin Frutiger",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-uglify": "^2.0.1"
+  }
+}
