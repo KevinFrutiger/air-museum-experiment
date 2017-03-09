@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
 <script src="https://unpkg.com/aframe-template-component@3.1.1/dist/aframe-template-component.min.js"></script>
-<script src="js/three-glTFLoader.js"></script>
+<script src="js/lib/three-glTFLoader.js"></script>
 <script src="https://sdk.altvr.com/libs/altspace.js/2.0.2/altspace.min.js"></script>
 </head>
 <body>
@@ -104,16 +104,16 @@
 
       <!-- Engine audio. Engine #1 - 4 (L - R) -->
       <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
-          sound="src: #boeing-747-100-engine-audio; autoplay: true; loop: true"
+          sound="src: url(assets/audio/jet_engine_2.wav); autoplay: true; loop: true"
           position="21.08 3.60 -0.70"></a-entity>
       <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
-          sound="src: #boeing-747-100-engine-audio; autoplay: true; loop: true"
+          sound="src: url(assets/audio/jet_engine_2.wav); autoplay: true; loop: true"
           position="11.89 2.59 8.59"></a-entity>
       <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
-          sound="src: #boeing-747-100-engine-audio; autoplay: true; loop: true"
+          sound="src: url(assets/audio/jet_engine_2.wav); autoplay: true; loop: true"
           position="-11.89 2.59 8.59"></a-entity>
       <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
-          sound="src: #boeing-747-100-engine-audio; autoplay: true; loop: true"
+          sound="src: url(assets/audio/jet_engine_2.wav); autoplay: true; loop: true"
           position="-21.08 3.60 -0.70"></a-entity>
     </a-entity>
 
@@ -246,7 +246,7 @@
         data-url="https://en.wikipedia.org/wiki/Wright_Flyer"></a-entity>
 
     <!-- Camera for use in browser. -->
-    <a-entity position="0 0 -90">
+    <a-entity position="0 0 0">
       <!-- Altspace client ignores this -->
       <a-camera>
         <a-cursor></a-cursor>
