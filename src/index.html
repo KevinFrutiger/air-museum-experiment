@@ -26,6 +26,9 @@
       <a-asset-item id="boeing-747-100-gltf" src="assets/models/boeing_747-100.gltf?v1.3"></a-asset-item>
       <a-assst-item id="wright-flyer-gltf" src="assets/models/wright_flyer.gltf?v1.2"></a-assst-item>
 
+      <!-- aircraft audio, for browser -->
+      <audio id="boeing-747-100-engine-audio" src="assets/audio/jet_engine_2.wav"></audio>
+
       <!-- info display assets -->
       <img id="wright-flyer-label-year-img" src="assets/images/wright-flyer-label-year.png" alt="">
       <img id="wright-flyer-plaque-img" src="assets/images/wright-flyer-plaque.png" alt="">
@@ -92,21 +95,25 @@
 
     <!-- Moving aircraft -->
     <a-entity gltf-model="#boeing-747-100-gltf" rotation="-5 0 0">
-      <!-- ~102.889 meters/sec, 200 knots -->
+      <!-- 102.889 meters/sec = 200 knots -->
       <a-animation attribute="position"
-          dur="79620"
-          from="0 100 -4096"
+          dur="59715"
+          from="0 100 -2048"
           to="0 100 4096"
           ></a-animation>
 
       <!-- Engine audio. Engine #1 - 4 (L - R) -->
-      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 1"
+      <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
+          sound="src: #boeing-747-100-engine-audio; autoplay: true; loop: true"
           position="21.08 3.60 -0.70"></a-entity>
-      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 1"
+      <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
+          sound="src: #boeing-747-100-engine-audio; autoplay: true; loop: true"
           position="11.89 2.59 8.59"></a-entity>
-      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 1"
+      <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
+          sound="src: #boeing-747-100-engine-audio; autoplay: true; loop: true"
           position="-11.89 2.59 8.59"></a-entity>
-      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 1"
+      <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
+          sound="src: #boeing-747-100-engine-audio; autoplay: true; loop: true"
           position="-21.08 3.60 -0.70"></a-entity>
     </a-entity>
 
@@ -116,14 +123,14 @@
     <a-entity id="boeing-747-100" gltf-model="#boeing-747-100-gltf" position="38.85 0 -132.35">
 
       <!-- Engine audio. Engine #1 - 4 (L - R) -->
-      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 0.25"
+      <!--<a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 0.25"
           position="21.08 3.60 -0.70"></a-entity>
-      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 0.25"
+      <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 0.25"
           position="11.89 2.59 8.59"></a-entity>
-      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 0.25"
+      <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 0.25"
           position="-11.89 2.59 8.59"></a-entity>
-      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 0.25"
-          position="-21.08 3.60 -0.70"></a-entity>
+      <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 0.25"
+          position="-21.08 3.60 -0.70"></a-entity>-->
 
       <!-- nose gear colliders -->
       <a-entity
