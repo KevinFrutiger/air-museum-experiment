@@ -90,7 +90,27 @@
     <a-entity id="hangar-1" gltf-model="#hangar-1-gltf"></a-entity>
     <a-entity id="hangar-2" gltf-model="#hangar-2-gltf"></a-entity>
 
-    <!-- Aircraft and displays -->
+    <!-- Moving aircraft -->
+    <a-entity gltf-model="#boeing-747-100-gltf" rotation="-5 0 0">
+      <!-- ~102.889 meters/sec, 200 knots -->
+      <a-animation attribute="position"
+          dur="79620"
+          from="0 100 -4096"
+          to="0 100 4096"
+          ></a-animation>
+
+      <!-- Engine audio. Engine #1 - 4 (L - R) -->
+      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 1"
+          position="21.08 3.60 -0.70"></a-entity>
+      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 1"
+          position="11.89 2.59 8.59"></a-entity>
+      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 1"
+          position="-11.89 2.59 8.59"></a-entity>
+      <a-entity n-sound="src: assets/audio/boeing-747-engine-audio.ogg; autoplay: true; loop: true; volume: 1"
+          position="-21.08 3.60 -0.70"></a-entity>
+    </a-entity>
+
+    <!-- Static aircraft and displays -->
 
     <!-- Boeing 747-100 -->
     <a-entity id="boeing-747-100" gltf-model="#boeing-747-100-gltf" position="38.85 0 -132.35">
@@ -219,7 +239,7 @@
         data-url="https://en.wikipedia.org/wiki/Wright_Flyer"></a-entity>
 
     <!-- Camera for use in browser. -->
-    <a-entity position="38.85 0 -90">
+    <a-entity position="0 0 -90">
       <!-- Altspace client ignores this -->
       <a-camera>
         <a-cursor></a-cursor>
@@ -235,6 +255,7 @@
       // Create a sky image.
       var el = document.createElement('a-sky');
       el.setAttribute('material', 'color', 'blue');
+      el.setAttribute('radius', '4096')
 
       var sceneEl = document.querySelector('a-scene');
       sceneEl.appendChild(el);
