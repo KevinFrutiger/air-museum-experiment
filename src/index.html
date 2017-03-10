@@ -13,11 +13,11 @@
 <body>
 
   <!-- Scene rotated to match lighting to sunset background in Playground space -->
-  <a-scene altspace rotation="0 150 0">
+  <a-scene altspace rotation="0 150 0" sync sync-system="app: airmuseum; author: frutigergroup">
 
     <a-assets>
       <!-- airport assets -->
-      <a-asset-item id="ground-gltf" src="assets/models/ground.gltf?v1.1"></a-asset-item>
+      <a-asset-item id="runways-gltf" src="assets/models/runways.gltf?v1.1"></a-asset-item>
       <a-asset-item id="tower-gltf" src="assets/models/tower.gltf?v1.1"></a-asset-item>
       <a-asset-item id="hangar-1-gltf" src="assets/models/hangar_1.gltf?v1.0"></a-asset-item>
       <a-asset-item id="hangar-2-gltf" src="assets/models/hangar_2.gltf?v1.0"></a-asset-item>
@@ -82,7 +82,13 @@
     </a-assets>
 
     <!-- Airport -->
-    <a-entity id="ground" gltf-model="#ground-gltf"></a-entity>
+    <!-- Intentionally using a low repeat for grass texture, since it looks
+         better overall (better depth) than giving grass its natural scale. -->
+    <a-plane id="ground" width="1280" height="1280"
+        rotation="-90 0 0"
+        position="0 -0.2 0"
+        material="shader: flat; color: #ccc; src: url(assets/models/grass-tile-3.jpg); repeat: 1 1"></a-plane>
+    <a-entity id="runways" gltf-model="#runways-gltf"></a-entity>
     <a-entity id="tower" gltf-model="#tower-gltf">
       <a-entity id="tower-collider"
           geometry="primitive: box; width: 16.27; depth: 16.27; height: 72"
@@ -94,19 +100,42 @@
     <a-entity id="hangar-2" gltf-model="#hangar-2-gltf"></a-entity>
 
     <!-- Moving aircraft -->
-    <a-entity gltf-model="#boeing-747-100-gltf" rotation="-5 0 0">
+    <a-entity id="boeing-747-100-flying" gltf-model="#boeing-747-100-gltf" rotation="-5 0 0" position="0 100 -2048" sync sync-transform>
       <!-- 102.889 meters/sec = 200 knots -->
-      <a-animation attribute="position"
+      <a-animation
+          id="boeing-747-100-upwind"
+          begin="flyupwind"
+          attribute="position"
           dur="59715"
           from="0 100 -2048"
-          to="0 100 4096"
-          ></a-animation>
+          to="0 100 4096"></a-animation>
+      <a-animation
+          id="boeing-747-100-upwind-orientation"
+          begin="flyupwind"
+          attribute="rotation"
+          dur="1"
+          to="-5 0 0"></a-animation>
+      <a-animation
+          id="boeing-747-100-downwind"
+          begin="flydownwind"
+          attribute="position"
+          dur="59715"
+          from="400 100 2048"
+          to="400 100 -4096"></a-animation>
+      <a-animation
+          id="boeing-747-100-downwind-orientation"
+          begin="flydownwind"
+          attribute="rotation"
+          dur="1"
+          to="-5 180 0"></a-animation>
 
       <!-- Engine audio. Engine #1 - 4 (L - R) -->
-      <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
+      <a-entity id="boeing-747-100-engine-sound" n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
           sound="src: url(assets/audio/jet_engine_2.wav); autoplay: true; loop: true"
-          position="21.08 3.60 -0.70"></a-entity>
-      <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
+          position="21.08 3.60 -0.70"
+          sync sync-n-sound
+          ></a-entity>
+      <!--<a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
           sound="src: url(assets/audio/jet_engine_2.wav); autoplay: true; loop: true"
           position="11.89 2.59 8.59"></a-entity>
       <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
@@ -114,7 +143,7 @@
           position="-11.89 2.59 8.59"></a-entity>
       <a-entity n-sound="src: assets/audio/jet_engine_2.wav; autoplay: true; loop: true; volume: 1; rolloff: cosine; minDistance: 300"
           sound="src: url(assets/audio/jet_engine_2.wav); autoplay: true; loop: true"
-          position="-21.08 3.60 -0.70"></a-entity>
+          position="-21.08 3.60 -0.70"></a-entity>-->
     </a-entity>
 
     <!-- Static aircraft and displays -->
@@ -258,6 +287,30 @@
 
 
   <script>
+    var boeing747 = document.querySelector('#boeing-747-100-flying');
+    var upwind = document.querySelector('#boeing-747-100-upwind');
+    var downwind = document.querySelector('#boeing-747-100-downwind');
+
+    upwind.addEventListener('animationend', function() {
+        boeing747.emit('flydownwind');
+    });
+
+    downwind.addEventListener('animationend', function() {
+        boeing747.emit('flyupwind');
+    });
+
+    boeing747.addEventListener('stateadded', function(event) {
+      if (event.detail.state === 'fly') {
+        boeing747.emit('flyupwind');
+      }
+    });
+
+    boeing747.addEventListener('model-loaded', function() {
+      boeing747.addState('fly');
+    });
+
+
+
     if (!inAltspace()) {
       // Create a sky image.
       var el = document.createElement('a-sky');
