@@ -1,1 +1,0 @@
-function showColliders(str){var colliderType=str||"mesh",colliders=document.querySelectorAll("[n-"+colliderType+"-collider]");if(0===colliders.length)return void console.warn("No colliders of that type");for(var i=0;i<colliders.length;i++)colliders[i].setAttribute("material","shader: flat; color: red; opacity: 0.3")}

@@ -4,6 +4,7 @@
   "description": "VR Air Museum built for the Altspace and the Web.",
   "author": "Kevin Frutiger",
   "devDependencies": {
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-htmlmin": "^3.0.0",
     "gulp-string-replace": "^0.4.0",

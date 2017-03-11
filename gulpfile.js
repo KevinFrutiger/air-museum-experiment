@@ -1,12 +1,19 @@
 var gulp = require('gulp');
 var htmlmin = require('gulp-htmlmin');
 var uglify = require('gulp-uglify');
+var replace = require('gulp-string-replace');
+var fs = require('fs');
+var del = require('del');
 
 // TODO: Minify PNG, JPG, GLTF
 
-gulp.task('build', ['minifyhtml', 'minifyjs', 'copy']);
+gulp.task('build', ['clean', 'inlineAndMinify', 'copyAssets', 'copyJsLibs']);
 
-gulp.task('minifyhtml', function() {
+gulp.task('clean', function() {
+  return del(['dist']);
+});
+
+gulp.task('inlineAndMinify', ['clean'], function() {
   var htmlminOptions = {
     collapseWhitespace: true,
     minifyJS: true,
@@ -14,21 +21,22 @@ gulp.task('minifyhtml', function() {
   };
 
   return gulp.src('src/*.html')
+    .pipe(replace(/<script src=\"(js\/app.js)\"><\/script>/, function(replacement, p1) {
+      return '<script>' + fs.readFileSync('src/' + p1, 'utf-8') + '</script>'
+    }))
+    .pipe(replace(/<script src=\"(js\/components\/[\w-\/.]+)\"><\/script>/g, function(replacement, p1) {
+      return '<script>' + fs.readFileSync('src/' + p1, 'utf-8') + '</script>'
+    }))
     .pipe(htmlmin(htmlminOptions))
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('minifyjs', function() {
-  var uglifyOptions = {
-    mangle: false
-  };
-
-  return gulp.src(['src/js/**/*.js', '!src/js/**/lib/**'])
-    .pipe(uglify(uglifyOptions))
-    .pipe(gulp.dest('dist/js'));
-});
-
-gulp.task('copy', function() {
+gulp.task('copyAssets', ['clean'], function() {
   return gulp.src('src/assets/**')
     .pipe(gulp.dest('dist/assets'));
 });
+
+gulp.task('copyJsLibs', ['clean'], function() {
+  return gulp.src('src/js/lib/**')
+    .pipe(gulp.dest('dist/js/lib'));
+})
