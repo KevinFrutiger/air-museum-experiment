@@ -5,7 +5,7 @@ This app is an experiment with AltspaceVR's A-Frame SDK and A-Frame in general.
 Some notes:
 - The aircraft are unpainted.
 - The Wright Flyer is just basic shapes for scale
-- The ground texture was intentionally left untiled. Tightly tiled textures on a flat plane seem to filter to a solid color towars the horizon and loose a sense of depth.
+- The ground texture was intentionally left untiled. Tightly tiled textures on a flat plane seem to filter to a solid color towards the horizon and loose a sense of depth.
 
 ## Running the app
 
