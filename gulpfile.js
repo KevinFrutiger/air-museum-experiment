@@ -2,11 +2,12 @@ var gulp = require('gulp');
 var fs = require('fs');
 var del = require('del');
 var replace = require('gulp-string-replace');
+var eslint = require('gulp-eslint');
 var htmlmin = require('gulp-htmlmin');
 var imagemin = require('gulp-imagemin');
 
 gulp.task('build',
-          ['clean', 'inlineAndMinify', 'minImages',
+          ['clean', 'lint', 'inlineAndMinify', 'minImages',
            'copyAssets', 'copyJsLibs']);
 
 /**
@@ -14,6 +15,22 @@ gulp.task('build',
  */
 gulp.task('clean', function() {
   return del(['dist']);
+});
+
+/**
+ * Lints all JS except third-party libs
+ */
+gulp.task('lint', function() {
+  var eslintOptions = {
+    rules: {
+      quotes: ['error', 'single'],
+      semi: ['error', 'always']
+    }
+  };
+
+  return gulp.src(['src/js/**/*.js', '!src/js/lib/**'])
+    .pipe(eslint(eslintOptions))
+    .pipe(eslint.failOnError());
 });
 
 /**

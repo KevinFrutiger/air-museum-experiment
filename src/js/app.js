@@ -9,7 +9,7 @@ var app;
         // Create a skybox.
         var el = document.createElement('a-sky');
         el.setAttribute('material', 'color', 'blue');
-        el.setAttribute('radius', '4096')
+        el.setAttribute('radius', '4096');
 
         var sceneEl = document.querySelector('a-scene');
         sceneEl.appendChild(el);

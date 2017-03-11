@@ -38,6 +38,6 @@ AFRAME.registerComponent('fg-web-link', {
   remove: function() {
     el.removeEventListener('click', this.clickHandler);
     el.removeEventListener('mouseenter', this.mouseenterHandler, true);
-    el.removeEventListener('mouseleave', this.mouseleave)
+    el.removeEventListener('mouseleave', this.mouseleave);
   }
 });
