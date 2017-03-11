@@ -14,6 +14,7 @@
 
   <!-- Scene rotated to match lighting to sunset background in Playground space -->
   <a-scene altspace rotation="0 150 0" sync sync-system="app: airmuseum; author: frutigergroup">
+    <!--<a-scene altspace rotation="0 150 0">-->
 
     <a-assets>
       <!-- airport assets -->
@@ -276,7 +277,7 @@
 
     <!-- Camera for use in browser. -->
     <a-entity position="0 0 0">
-      <!-- Altspace client ignores this -->
+      <!-- Altspace client doesn't use this -->
       <a-camera>
         <a-cursor></a-cursor>
       </a-camera>
@@ -284,142 +285,9 @@
 
   </a-scene>
 
-
-
-  <script>
-    var boeing747 = document.querySelector('#boeing-747-100-flying');
-    var upwind = document.querySelector('#boeing-747-100-upwind');
-    var downwind = document.querySelector('#boeing-747-100-downwind');
-
-    upwind.addEventListener('animationend', function() {
-        boeing747.emit('flydownwind');
-    });
-
-    downwind.addEventListener('animationend', function() {
-        boeing747.emit('flyupwind');
-    });
-
-    boeing747.addEventListener('stateadded', function(event) {
-      if (event.detail.state === 'fly') {
-        boeing747.emit('flyupwind');
-      }
-    });
-
-    boeing747.addEventListener('model-loaded', function() {
-      boeing747.addState('fly');
-    });
-
-
-
-    if (!inAltspace()) {
-      // Create a sky image.
-      var el = document.createElement('a-sky');
-      el.setAttribute('material', 'color', 'blue');
-      el.setAttribute('radius', '4096')
-
-      var sceneEl = document.querySelector('a-scene');
-      sceneEl.appendChild(el);
-
-      sceneEl = null;
-      el = null;
-    }
-
-    function inAltspace() {
-      return (
-        (typeof altspace !== 'undefined') &&
-        (typeof altspace.inClient !== 'undefined') &&
-        altspace.inClient
-      );
-    }
-
-
-    /* Components */
-
-    /**
-     * Loads glTF model files.
-     * Copied from gltf-model from 0.5.0 since it doesn't exist in 0.3.0.
-     * Changed to use glTFLoader, since we're using three r74 instead of r84.
-     */
-    AFRAME.registerComponent('gltf-model', {
-      schema: {type: 'src'},
-
-      init: function () {
-        this.model = null;
-        this.loader = new THREE.glTFLoader();
-      },
-
-      update: function () {
-        var self = this;
-        var el = this.el;
-        var src = this.data;
-
-        if (!src) { return; }
-
-        this.remove();
-
-        this.loader.load(src, function gltfLoaded (gltfModel) {
-          self.model = gltfModel.scene;
-          //self.system.registerModel(self.model);
-          el.setObject3D('mesh', self.model);
-          el.emit('model-loaded', {format: 'gltf', model: self.model});
-        });
-      },
-
-      remove: function () {
-        if (!this.model) { return; }
-        this.el.removeObject3D('mesh');
-        //this.system.unregisterModel(this.model);
-      }
-    });
-
-    /**
-     *  Adds handlers to open a web page.
-     *
-     *
-     *  Note that Altspace web viewe does not navigate to anchors.
-     */
-    AFRAME.registerComponent('fg-web-link', {
-      schema: {
-        url: {type: 'string'}
-      },
-
-      init: function() {
-        var data = this.data;
-        var el = this.el;
-
-        this.clickHandler = function(event) {
-         if (inAltspace()) {
-            altspace.open(data.url);
-          } else {
-            window.open(data.url);
-          }
-        };
-
-        this.mouseenterHandler = function(event) {
-          event.target.setAttribute('color', '#ffd200');
-        };
-
-        this.mouseleave = function(event) {
-          event.target.setAttribute('color', '#fff');
-        };
-
-        el.addEventListener('click', this.clickHandler);
-        el.addEventListener('mouseenter', this.mouseenterHandler, true);
-        // Doesn't work in browser A-Frame 0.3.0
-        el.addEventListener('mouseleave', this.mouseleave);
-
-      },
-
-      update: function(oldData) {
-        // Nothing.
-      },
-
-      remove: function() {
-        el.removeEventListener('click', this.clickHandler);
-        el.removeEventListener('mouseenter', this.mouseenterHandler, true);
-        el.removeEventListener('mouseleave', this.mouseleave)
-      }
-    });
-  </script>
+  <!-- app and A-Frame components -->
+  <script src="js/components/fg-gltf.js"></script>
+  <script src="js/components/fg-web-link.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
