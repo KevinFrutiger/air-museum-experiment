@@ -1,18 +1,24 @@
 var gulp = require('gulp');
-var htmlmin = require('gulp-htmlmin');
-var uglify = require('gulp-uglify');
-var replace = require('gulp-string-replace');
 var fs = require('fs');
 var del = require('del');
+var replace = require('gulp-string-replace');
+var htmlmin = require('gulp-htmlmin');
+var imagemin = require('gulp-imagemin');
 
-// TODO: Minify PNG, JPG, GLTF
+gulp.task('build',
+          ['clean', 'inlineAndMinify', 'minImages',
+           'copyAssets', 'copyJsLibs']);
 
-gulp.task('build', ['clean', 'inlineAndMinify', 'copyAssets', 'copyJsLibs']);
-
+/**
+ * Cleans out dist in prep for build.
+ */
 gulp.task('clean', function() {
   return del(['dist']);
 });
 
+/**
+ * Inlines JS into HTML and minifies JS and HTML
+ */
 gulp.task('inlineAndMinify', ['clean'], function() {
   var htmlminOptions = {
     collapseWhitespace: true,
@@ -20,23 +26,44 @@ gulp.task('inlineAndMinify', ['clean'], function() {
     removeComments: true
   };
 
+  var replaceOptions = {
+    logs: {
+      enabled: false
+    }
+  };
+
   return gulp.src('src/*.html')
     .pipe(replace(/<script src=\"(js\/app.js)\"><\/script>/, function(replacement, p1) {
       return '<script>' + fs.readFileSync('src/' + p1, 'utf-8') + '</script>'
-    }))
+    }, replaceOptions))
     .pipe(replace(/<script src=\"(js\/components\/[\w-\/.]+)\"><\/script>/g, function(replacement, p1) {
       return '<script>' + fs.readFileSync('src/' + p1, 'utf-8') + '</script>'
-    }))
+    }, replaceOptions))
     .pipe(htmlmin(htmlminOptions))
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('copyAssets', ['clean'], function() {
-  return gulp.src('src/assets/**')
+/**
+ * Minifies all images
+ */
+gulp.task('minImages', ['clean'], function() {
+  return gulp.src('src/assets/**/*.*(png|jpg)')
+    .pipe(imagemin())
     .pipe(gulp.dest('dist/assets'));
 });
 
+/**
+ * Copies remaining assets not handled in other tasks.
+ */
+gulp.task('copyAssets', ['clean'], function() {
+  return gulp.src(['src/assets/**', '!src/assets/**/*.*(png|jpg)'])
+    .pipe(gulp.dest('dist/assets'));
+});
+
+/**
+ * Copies remaining JS not handled in other tasks.
+ */
 gulp.task('copyJsLibs', ['clean'], function() {
   return gulp.src('src/js/lib/**')
     .pipe(gulp.dest('dist/js/lib'));
-})
+});
