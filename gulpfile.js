@@ -50,12 +50,11 @@ gulp.task('inlineAndMinify', ['clean'], function() {
   };
 
   return gulp.src('src/*.html')
-    .pipe(replace(/<script src=\"(js\/app.js)\"><\/script>/, function(replacement, p1) {
-      return '<script>' + fs.readFileSync('src/' + p1, 'utf-8') + '</script>'
-    }, replaceOptions))
-    .pipe(replace(/<script src=\"(js\/components\/[\w-\/.]+)\"><\/script>/g, function(replacement, p1) {
-      return '<script>' + fs.readFileSync('src/' + p1, 'utf-8') + '</script>'
-    }, replaceOptions))
+    .pipe(replace(/<script src=\"(js\/[\w-\/.]+)\"><\/script>/g,
+        function(replacement, p1) {
+          return '<script>' + fs.readFileSync('src/' + p1, 'utf-8') +
+                 '</script>';
+        }, replaceOptions))
     .pipe(htmlmin(htmlminOptions))
     .pipe(gulp.dest('dist'));
 });
