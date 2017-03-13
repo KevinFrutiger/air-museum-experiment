@@ -18,22 +18,6 @@ var app;
       app.setupAnimation();
     },
 
-    inAltspace: function() {
-      return (
-        (typeof altspace !== 'undefined') &&
-        (typeof altspace.inClient !== 'undefined') &&
-        altspace.inClient
-      );
-    },
-
-    open: function(url) {
-      if (app.inAltspace()) {
-        altspace.open(url);
-      } else {
-        window.open(url);
-      }
-    },
-
     setupAnimation: function() {
       var boeing747 = document.querySelector('#boeing-747-100-flying');
       var upwind = document.querySelector('#boeing-747-100-upwind');

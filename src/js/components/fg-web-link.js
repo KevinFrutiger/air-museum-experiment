@@ -11,9 +11,10 @@ AFRAME.registerComponent('fg-web-link', {
   init: function() {
     var data = this.data;
     var el = this.el;
+    var self = this;
 
     this.clickHandler = function(event) {
-      app.open(data.url);
+      self.open(data.url);
     };
 
     this.mouseenterHandler = function(event) {
@@ -39,5 +40,21 @@ AFRAME.registerComponent('fg-web-link', {
     el.removeEventListener('click', this.clickHandler);
     el.removeEventListener('mouseenter', this.mouseenterHandler, true);
     el.removeEventListener('mouseleave', this.mouseleave);
+  },
+
+  open: function(url) {
+    if (this.inAltspace()) {
+      altspace.open(url);
+    } else {
+      window.open(url);
+    }
+  },
+
+  inAltspace: function() {
+    return (
+      (typeof altspace !== 'undefined') &&
+      (typeof altspace.inClient !== 'undefined') &&
+      altspace.inClient
+    );
   }
 });
