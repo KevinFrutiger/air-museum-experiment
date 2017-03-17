@@ -15,7 +15,7 @@ This app can be run from either the src/ files or the dist/ files. The dist/ fil
 
 ### Running in AltspaceVR
 
-[TODO: add CDN link]
+[https://kevinfrutiger.github.io/vr-air-museum-experiment/dist/](https://kevinfrutiger.github.io/vr-air-museum-experiment/dist/)
 
 This app is real-world scale and is intended to be displayed in Altspace's fullspace enclosures. It does not re-scale itself for the smaller enclosures and likely just won't show there.
 
