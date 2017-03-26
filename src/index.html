@@ -30,6 +30,7 @@
       <a-asset-item id="tower-gltf" src="assets/models/tower.gltf?v1.1"></a-asset-item>
       <a-asset-item id="hangar-1-gltf" src="assets/models/hangar_1.gltf?v1.0"></a-asset-item>
       <a-asset-item id="hangar-2-gltf" src="assets/models/hangar_2.gltf?v1.0"></a-asset-item>
+      <img id="ground-tile" src="assets/models/grass-tile-3.jpg" alt="">
 
       <!-- aircraft assets -->
       <a-asset-item id="boeing-747-100-gltf" src="assets/models/boeing_747-100.gltf?v1.4"></a-asset-item>
@@ -93,10 +94,10 @@
     <!-- Airport -->
     <!-- Intentionally using a low repeat for grass texture, since it looks
          better overall (better depth) than giving grass its natural scale. -->
-    <a-plane id="ground" width="1280" height="1280"
-        rotation="-90 0 0"
-        position="0 -0.2 0"
-        material="shader: flat; color: #ccc; src: url(assets/models/grass-tile-3.jpg); repeat: 1 1"></a-plane>
+    <a-plane id="ground"
+        width="1280" height="1280"
+        rotation="-90 0 0" position="0 -0.2 0"
+        shader="flat" color="#ccc" src="#ground-tile" repeat="1 1"></a-plane>
     <a-entity id="runways" gltf-model="#runways-gltf"></a-entity>
     <a-entity id="tower" gltf-model="#tower-gltf">
       <a-entity id="tower-collider"
