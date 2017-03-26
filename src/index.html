@@ -15,6 +15,7 @@
 <!-- Custom components -->
 <script src="js/fg-gltf.js"></script>
 <script src="js/fg-web-link.js"></script>
+<script src="js/fg-fly-pattern.js"></script>
 <script src="js/fg-app.js"></script>
 
 </head>
@@ -109,7 +110,12 @@
     <a-entity id="hangar-2" gltf-model="#hangar-2-gltf"></a-entity>
 
     <!-- Moving aircraft -->
-    <a-entity id="boeing-747-100-flying" gltf-model="#boeing-747-100-gltf" rotation="-5 0 0" position="0 100 -2048" sync sync-transform>
+    <a-entity id="boeing-747-100-flying"
+        gltf-model="#boeing-747-100-gltf"
+        fg-fly-pattern="a"
+        rotation="-5 0 0" position="0 100 -2048"
+        sync sync-transform>
+
       <!-- 102.889 meters/sec = 200 knots -->
       <a-animation
           id="boeing-747-100-upwind"

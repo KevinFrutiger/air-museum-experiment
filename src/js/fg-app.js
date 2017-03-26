@@ -24,26 +24,6 @@ AFRAME.registerComponent('fg-app', {
   },
 
   setupAnimation: function() {
-    var boeing747 = document.querySelector('#boeing-747-100-flying');
-    var upwind = document.querySelector('#boeing-747-100-upwind');
-    var downwind = document.querySelector('#boeing-747-100-downwind');
-
-    boeing747.addEventListener('stateadded', function(event) {
-      if (event.detail.state === 'fly') {
-        boeing747.emit('flyupwind');
-      }
-    });
-
-    upwind.addEventListener('animationend', function() {
-      boeing747.emit('flydownwind');
-    });
-
-    downwind.addEventListener('animationend', function() {
-      boeing747.emit('flyupwind');
-    });
-
-    boeing747.addEventListener('model-loaded', function() {
-      boeing747.addState('fly');
-    });
+    //
   }
 });
