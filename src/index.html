@@ -22,8 +22,8 @@
 <body>
 
   <!-- Scene rotated to match lighting to sunset background in Playground space -->
-  <a-scene fg-app rotation="0 150 0" altspace sync-system="app: airmuseum; author: frutigergroup">
-  <!--<a-scene fg-app altspace rotation="0 150 0">-->
+  <!--<a-scene fg-app rotation="0 150 0" altspace sync-system="app: airmuseum; author: frutigergroup">-->
+  <a-scene fg-app altspace rotation="0 150 0">
 
     <a-assets>
       <!-- airport assets -->
@@ -113,7 +113,7 @@
     <!-- Moving aircraft -->
     <a-entity id="boeing-747-100-flying"
         gltf-model="#boeing-747-100-gltf"
-        fg-fly-pattern="a"
+        fg-fly-pattern="boeing-747-100-upwind, boeing-747-100-downwind"
         rotation="-5 0 0" position="0 100 -2048"
         sync sync-transform>
 
