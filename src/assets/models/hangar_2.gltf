@@ -1,1 +1,208 @@
-{"accessors": {"accessor_buffer_hangar_2_MESH_0": {"bufferView": "bufferView_buffer_hangar_2_MESH_0", "byteOffset": 0, "byteStride": 12, "componentType": 5126, "count": 24, "max": [0.9382085800170898, 0.8746515512466431, 2.0], "min": [-1.0617914199829102, -1.125348448753357, 0.0], "type": "VEC3"}, "accessor_buffer_hangar_2_MESH_1": {"bufferView": "bufferView_buffer_hangar_2_MESH_0", "byteOffset": 288, "byteStride": 12, "componentType": 5126, "count": 24, "max": [1.0, 1.0, 1.0], "min": [-1.0, -1.0, -1.0], "type": "VEC3"}, "accessor_buffer_hangar_2_MESH_2": {"bufferView": "bufferView_buffer_hangar_2_MESH_0", "byteOffset": 576, "byteStride": 8, "componentType": 5126, "count": 24, "max": [0.8744134306907654, 0.9945220127701759], "min": [0.10590023547410965, 0.009356439113616943], "type": "VEC2"}, "accessor_buffer_hangar_2_MESH_3": {"bufferView": "bufferView_buffer_hangar_2_MESH_1", "byteOffset": 0, "byteStride": 2, "componentType": 5123, "count": 36, "max": [23], "min": [0], "type": "SCALAR"}}, "asset": {"profile": {"api": "WebGL", "version": "1.0.3"}, "version": "1.0"}, "bufferViews": {"bufferView_buffer_hangar_2_MESH_0": {"buffer": "buffer_combined", "byteLength": 768, "byteOffset": 0, "target": 34962}, "bufferView_buffer_hangar_2_MESH_1": {"buffer": "buffer_combined", "byteLength": 72, "byteOffset": 768, "target": 34963}}, "buffers": {"buffer_combined": {"byteLength": 840, "type": "arraybuffer", "uri": "data:text/plain;base64,cC5wPyrpXz8AAAAAcC5wPyrpXz8AAABAcC5wP2sLkL8AAAAAyOiHvyrpXz8AAAAAyOiHvyrpXz8AAABAcC5wPyrpXz8AAABAyOiHvyrpXz8AAABAyOiHv2sLkL8AAAAAyOiHv2sLkL8AAABAyOiHv2sLkL8AAABAyOiHvyrpXz8AAABAyOiHv2sLkL8AAAAAcC5wPyrpXz8AAAAAcC5wP2sLkL8AAABAyOiHvyrpXz8AAAAAcC5wP2sLkL8AAAAAcC5wPyrpXz8AAAAAcC5wP2sLkL8AAABAyOiHv2sLkL8AAABAyOiHvyrpXz8AAAAAcC5wP2sLkL8AAAAAyOiHv2sLkL8AAAAAcC5wPyrpXz8AAABAcC5wP2sLkL8AAABAAAAAAAAAAAAAAIC/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIC/AAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAAAAAAAAgL8AAAAAAACAvwAAAAAAAAAAAAAAAAAAAAAAAIC/AACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAAAAAAAAAAAAAAAAAIC/AAAAAAAAgD8AAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AACAvwAAAAAAAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgL8AAAAAj9lfP5JyhD7BcPg+wEsZPGbcHz+YcoQ+j9lfP9vEPj/k7HA+4sQ+P97scD6ccoQ+5OxwPuLEPj9n3B8/3sQ+P8Vw+D7gxD4/xXD4PuDEPj/HcPg+/5h+P2fcHz/exD4/ZNwfP8BLGTzDcPg+mnKEPkHi2D3kxD4/ZtwfP5hyhD454tg9onKEPsNw+D6acoQ+xXD4PuDEPj9o3B8//ph+P2bcHz+YcoQ+Z9wfP97EPj/e7HA+nHKEPsNw+D6acoQ+EwAHAAgAEwAIAAoAEAAOAAQAEAAEABYAAgAMAAEAAgABABEAFQAUABcAFQAXAAkACwADAAAACwAAAA8ADQAFAAYADQAGABIA"}}, "extensions": {"KHR_materials_common": {"lights": {}}}, "extensionsUsed": ["KHR_materials_common"], "images": {"image_hangar_2_bake.jpg": {"uri": "hangar_2_bake.jpg"}}, "materials": {"material_hanger_1_MAT": {"extensions": {"KHR_materials_common": {"technique": "CONSTANT", "values": {"ambient": [1.0, 1.0, 1.0, 1.0], "diffuse": "texture_hangar_2_baked_tex", "doubleSided": false, "emission": "texture_hangar_2_baked_tex", "shininess": 50, "specular": [0.5, 0.5, 0.5, 1.0], "transparency": 1.0, "transparent": false}}}, "name": "hanger_1_MAT"}}, "meshes": {"mesh_hangar_2_MESH": {"name": "hangar_2_MESH", "primitives": [{"attributes": {"NORMAL": "accessor_buffer_hangar_2_MESH_1", "POSITION": "accessor_buffer_hangar_2_MESH_0", "TEXCOORD_0": "accessor_buffer_hangar_2_MESH_2"}, "indices": "accessor_buffer_hangar_2_MESH_3", "material": "material_hanger_1_MAT", "mode": 4}]}}, "nodes": {"node_hangar_2_obj": {"children": [], "matrix": [-4.371138857095502e-06, 100.0, 0.0, 0.0, -50.0, -2.185569428547751e-06, 0.0, 0.0, 0.0, 0.0, 25.0, 0.0, -236.33763122558594, -206.8408203125, 3.814697265625e-06, 1.0], "meshes": ["mesh_hangar_2_MESH"], "name": "hangar_2_obj"}, "node_scene_Scene_root": {"children": ["node_hangar_2_obj"], "matrix": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0], "name": "node_scene_Scene_root"}}, "samplers": {"sampler_default": {}}, "scene": "scene_Scene", "scenes": {"scene_Scene": {"extras": {"active_camera": "camera_POV_CAM", "background_color": [0.03736812621355057, 0.006104341242462397, 0.03215552866458893], "frames_per_second": 24}, "name": "Scene", "nodes": ["node_scene_Scene_root"]}}, "textures": {"texture_hangar_2_baked_tex": {"format": 35906, "internalFormat": 35906, "sampler": "sampler_default", "source": "image_hangar_2_bake.jpg"}}}
+{
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5121,
+            "count" : 36,
+            "max" : [
+                23
+            ],
+            "min" : [
+                0
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 24,
+            "max" : [
+                0.9382085800170898,
+                2.0,
+                1.125348448753357
+            ],
+            "min" : [
+                -1.0617914199829102,
+                0.0,
+                -0.8746515512466431
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 24,
+            "max" : [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "min" : [
+                -1.0,
+                -1.0,
+                -1.0
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5126,
+            "count" : 24,
+            "max" : [
+                0.0,
+                1.0,
+                1.0,
+                1.0
+            ],
+            "min" : [
+                -3.675482389553508e-07,
+                -1.0,
+                -1.0,
+                1.0
+            ],
+            "type" : "VEC4"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 24,
+            "max" : [
+                0.8744134306907654,
+                0.9945220127701759
+            ],
+            "min" : [
+                0.10590023547410965,
+                0.009356439113616943
+            ],
+            "type" : "VEC2"
+        }
+    ],
+    "asset" : {
+        "generator" : "Khronos Blender glTF 2.0 exporter",
+        "version" : "2.0"
+    },
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 36,
+            "byteOffset" : 0,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 36,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 324,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 384,
+            "byteOffset" : 612,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 192,
+            "byteOffset" : 996,
+            "target" : 34962
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 1188,
+            "uri" : "data:application/octet-stream;base64,AAECAAMBBAUGBAcFCAkKCAsJDA0ODA8NEBESEBMRFBUWFBcVyOiHvwAAAEBrC5A/yOiHvwAAAAAq6V+/yOiHvwAAAABrC5A/yOiHvwAAAEAq6V+/yOiHvwAAAEAq6V+/cC5wPwAAAAAq6V+/yOiHvwAAAAAq6V+/cC5wPwAAAEAq6V+/cC5wPwAAAEAq6V+/cC5wPwAAAABrC5A/cC5wPwAAAAAq6V+/cC5wPwAAAEBrC5A/cC5wPwAAAEBrC5A/yOiHvwAAAABrC5A/cC5wPwAAAABrC5A/yOiHvwAAAEBrC5A/cC5wPwAAAABrC5A/yOiHvwAAAAAq6V+/cC5wPwAAAAAq6V+/yOiHvwAAAABrC5A/yOiHvwAAAEBrC5A/cC5wPwAAAEAq6V+/yOiHvwAAAEAq6V+/cC5wPwAAAEBrC5A/AACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgL/+g8C0AACAPwAAAAAAAIC//oPAtAAAgD8AAAAAAACAv/6DwLQAAIA/AAAAAAAAgL/+g8C0AACAP5T+k7QAAIA/AAAAgAAAgD+U/pO0AACAPwAAAIAAAIA/lP6TtAAAgD8AAACAAACAP5T+k7QAAIA/AAAAgAAAgD8AAAAAAACAvwNYADQAAIA/AAAAAAAAgL8DWAA0AACAPwAAAAAAAIC/A1gANAAAgD8AAAAAAACAvwNYADQAAIA/clNFtAAAgL8AAACAAACAP3JTRbQAAIC/AAAAgAAAgD9yU0W0AACAvwAAAIAAAIA/clNFtAAAgL8AAACAAACAP3JTxbQAAAAAAACAvwAAgD9yU8W0AAAAAAAAgL8AAIA/clPFtAAAAAAAAIC/AACAP3JTxbQAAAAAAACAvwAAgD9wU0W0AAAAAAAAgD8AAIA/cFNFtAAAAAAAAIA/AACAP3BTRbQAAAAAAACAPwAAgD9wU0W0AAAAAAAAgD8AAIA/xXD4PuDEPj9o3B8//ph+P2fcHz/exD4/x3D4Pv+Yfj/k7HA+4sQ+Pzni2D2icoQ+QeLYPeTEPj/e7HA+nHKEPsFw+D7ASxk8ZtwfP5hyhD5k3B8/wEsZPMNw+D6acoQ+w3D4PppyhD5n3B8/3sQ+P2bcHz+YcoQ+xXD4PuDEPj9m3B8/mHKEPo/ZXz/bxD4/j9lfP5JyhD5n3B8/3sQ+P8Vw+D7gxD4/3uxwPpxyhD7k7HA+4sQ+P8Nw+D6acoQ+"
+        }
+    ],
+    "extensionsUsed" : [
+        "KHR_materials_unlit"
+    ],
+    "images" : [
+        {
+            "uri" : "hangar_2_bake.jpg"
+        }
+    ],
+    "materials" : [
+        {
+            "extensions" : {
+                "KHR_materials_unlit" : {}
+            },
+            "name" : "hanger_2_MAT_export",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1.0
+                ],
+                "baseColorTexture" : {
+                    "index" : 0
+                },
+                "metallicFactor" : 0.0,
+                "roughnessFactor" : 0.9
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "hangar_2_MESH",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "NORMAL" : 2,
+                        "POSITION" : 1,
+                        "TANGENT" : 3,
+                        "TEXCOORD_0" : 4
+                    },
+                    "indices" : 0,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "hangar_2_obj",
+            "rotation" : [
+                0.0,
+                0.7071068286895752,
+                -0.0,
+                0.7071067690849304
+            ],
+            "scale" : [
+                100.0,
+                25.0,
+                50.0
+            ],
+            "translation" : [
+                -236.33763122558594,
+                3.814697265625e-06,
+                206.8408203125
+            ]
+        }
+    ],
+    "samplers" : [
+        {}
+    ],
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        }
+    ]
+}

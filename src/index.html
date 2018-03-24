@@ -7,13 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Third-party libraries and components -->
-<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
-<script src="https://unpkg.com/aframe-template-component@3.1.1/dist/aframe-template-component.min.js"></script>
-<script src="js/lib/three-glTFLoader.js"></script>
-<script src="https://sdk.altvr.com/libs/altspace.js/2.0.3/altspace.min.js"></script>
+<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-template-component@^3.2.1/dist/aframe-template-component.min.js"></script>
+<script src="https://sdk.altvr.com/libs/altspace.js/2.8.2/altspace.min.js"></script>
 
 <!-- Custom components -->
-<script src="js/fg-gltf.js"></script>
 <script src="js/fg-web-link.js"></script>
 <script src="js/fg-fly-pattern.js"></script>
 <script src="js/fg-app.js"></script>
@@ -22,20 +20,20 @@
 <body>
 
   <!-- Scene rotated to match lighting to sunset background in Playground space -->
-  <a-scene fg-app rotation="0 150 0" altspace sync-system="app: airmuseum; author: frutigergroup">
-  <!--<a-scene fg-app altspace rotation="0 150 0">-->
+  <!--<a-scene fg-app rotation="0 150 0" altspace sync-system="app: airmuseum; author: frutigergroup">-->
+  <a-scene fg-app altspace rotation="0 150 0">
 
     <a-assets>
       <!-- airport assets -->
-      <a-asset-item id="runways-gltf" src="assets/models/runways.gltf?v1.1"></a-asset-item>
-      <a-asset-item id="tower-gltf" src="assets/models/tower.gltf?v1.1"></a-asset-item>
-      <a-asset-item id="hangar-1-gltf" src="assets/models/hangar_1.gltf?v1.0"></a-asset-item>
-      <a-asset-item id="hangar-2-gltf" src="assets/models/hangar_2.gltf?v1.0"></a-asset-item>
+      <a-asset-item id="runways-gltf" src="assets/models/runways.gltf"></a-asset-item>
+      <a-asset-item id="tower-gltf" src="assets/models/tower.gltf"></a-asset-item>
+      <a-asset-item id="hangar-1-gltf" src="assets/models/hangar_1.gltf"></a-asset-item>
+      <a-asset-item id="hangar-2-gltf" src="assets/models/hangar_2.gltf"></a-asset-item>
       <img id="ground-tile" src="assets/models/grass-tile-3.jpg" alt="">
 
       <!-- aircraft assets -->
-      <a-asset-item id="boeing-747-100-gltf" src="assets/models/boeing_747-100.gltf?v1.4"></a-asset-item>
-      <a-assst-item id="wright-flyer-gltf" src="assets/models/wright_flyer.gltf?v1.2"></a-assst-item>
+      <a-asset-item id="boeing-747-100-gltf" src="assets/models/boeing_747-100.gltf"></a-asset-item>
+      <a-assst-item id="wright-flyer-gltf" src="assets/models/wright_flyer.gltf"></a-assst-item>
 
       <!-- aircraft audio, for browser -->
       <audio id="boeing-747-100-engine-audio" src="assets/audio/jet_engine_2.wav"></audio>
@@ -53,12 +51,12 @@
       <script id="info-display" type="text/html">
           <a-image
               src="${ year }"
-              width="6" height="3"
+              width="6.0" height="3.0"
               position="0 10 0">
           </a-image>
           <a-image
               src="${ name }"
-              width="6" height="3"
+              width="3.0" height="1.5"
               position="0 1.4 0">
           </a-image>
           <a-entity
@@ -68,23 +66,23 @@
                 rotation="-24 0 0">
               <a-plane
                   shader="flat" side="front" src="${ description }"
-                  width="6" height="0.75">
+                  width="1.6" height="0.4">
               </a-plane>
               <a-plane
                   shader="flat" side="back" color="#111"
-                  width="6" height="0.75">
+                  width="1.6" height="0.4">
               </a-plane>
             </a-entity>
             <a-entity
-                position="3.5 0 0.50"
+                position="2 0 0.50"
                 rotation="-24 -50 0">
               <a-plane fg-web-link="url: ${ url }"
                   shader="flat" side="front" src="${ button }"
-                  width="0.75" height="0.75">
+                  width="0.40" height="0.40">
               </a-plane>
               <a-plane
                   shader="flat" side="back" color="#111"
-                  width="0.75" height="0.75">
+                  width="0.40" height="0.40">
               </a-plane>
             </a-entity>
           </a-entity>
