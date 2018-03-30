@@ -23,6 +23,9 @@ Sounds are played using the experimental native sound component that only works 
 
 ### In a Browser
 
+[http://www.frutigergroup.com/altspace/vr-air-museum/0.4.0/web-browser/dist/]
+(http://www.frutigergroup.com/altspace/vr-air-museum/0.4.0/web-browser/dist/)
+
 The *web-browser* branch can be run in a standard web browser. This version simply has the following Altspace script element commented out in *index.html*:
 
 `<script src="https://sdk.altvr.com/libs/altspace.js/2.8.2/altspace.min.js"></script>`
