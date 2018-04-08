@@ -1,6 +1,6 @@
 # VR Air Museum Experiment
 
-This app is an experiment with AltspaceVR's A-Frame SDK and A-Frame in general.
+This app is an experiment with [AltspaceVR](https://altvr.com/)'s A-Frame [API](https://altspacevr.github.io/AltspaceSDK/doc/aframe/) and [A-Frame](https://aframe.io/) in general.
 
 Some notes:
 - The aircraft are unpainted.
@@ -15,9 +15,16 @@ This app can be run from either the *src/* files or the *dist/* files. The *dist
 
 ### In AltspaceVR
 
+You'll need the following:
+- a system that meets the minimum system requirements for Altspace ([Get AltspaceVR](https://altvr.com/get-altspacevr/)). Note that this app has not been tested on mobile devices.
+- the [Altspace VR client](https://altvr.com/get-altspacevr/)
+- an [AltspaceVR](https://altvr.com/) account
+- your account enabled as a developer, to access the necessary SDK event spaces
+([developer.altvr.com](https://developer.altvr.com/) > Resources > Developer Registration)
+
 [https://kevinfrutiger.github.io/vr-air-museum-experiment/dist/](https://kevinfrutiger.github.io/vr-air-museum-experiment/dist/)
 
-This app is real-world scale and is intended to be displayed in Altspace's fullspace enclosures. It does not re-scale itself for the smaller enclosures and likely just won't show there.
+This app is real-world scale and is intended to be displayed in Altspace's fullspace enclosures (e.g. *SDK Playground [BETA]*). It does not re-scale itself for the smaller enclosures and likely just won't show there.
 
 Sounds are played using the experimental native sound component that only works in an experimental SDK space. They fall back to standard A-Frame `<sound>` components on the Web, but that component doesn't play back in Altspace.
 
